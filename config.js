@@ -11,9 +11,8 @@ window.SOULY_CONFIG = {
 };
 
 // O HTML principal ainda carrega o SDK 17 antes deste arquivo.
-// TablesDB só está disponível no bundle atual, então carregamos o SDK 27
-// de forma bloqueante enquanto o documento ainda está sendo interpretado.
-// Assim, todo o restante do Souly Control usa a API moderna por objeto.
+// Carregamos o bundle atual durante o parsing para disponibilizar TablesDB
+// antes do restante do aplicativo executar.
 if (typeof document !== "undefined" && document.readyState === "loading") {
-  document.write('<script src="https://cdn.jsdelivr.net/npm/appwrite@27.0.0"><\\/script>');
+  document.write('<script src="https://cdn.jsdelivr.net/npm/appwrite@27.0.0"></script>');
 }
